@@ -32,6 +32,10 @@ class Process implements Runnable {
 
     private int priority; //create variable priority of process (from 1 to 5)
 
+    private long createdTime; // to know when the process was created
+    private long lastQueueJoinTime; //to know the last time the process enter the queue
+    private long totalWaitTime; // to calculate the total waiting time spent in the queue
+
     // (editing) Constructor to initialize the process with name, burst time, and time quantum and priority
     public Process(String name, int burstTime, int timeQuantum, int priority) {
         this.name = name;
@@ -39,6 +43,30 @@ class Process implements Runnable {
         this.timeQuantum = timeQuantum;
         this.remainingTime = burstTime; // Initially, remaining time is equal to the burst time
         this.priority = priority; // to set the priority of the process
+
+        this.createdTime = System.currentTimeMillis(); //set the creation time when the process is created
+        this.lastQueueJoinTime =this.createdTime; // to set the last queue join time to the creation time 
+        this.totalWaitTime = 0; // to set the total waiting time to zero
+    }
+    // setter method for lastQueueJoinTime
+    public void setLastQueueJoinTime(long time) {
+        this.lastQueueJoinTime =time;
+    }
+    // setter method for totalWaitTime
+    public void setWaitTime(long time) {
+        this.totalWaitTime =this.totalWaitTime + time;
+    }
+    //getter method for totalWaitTime
+    public long getTotalWaitTime() {
+        return totalWaitTime;
+    }
+    // getter method for createdTime
+    public long getCreatedTime() {
+        return createdTime;
+    }
+    //getter method for lastQueueJoinTime
+    public long getLastQueueJoinTime() {
+        return lastQueueJoinTime;
     }
 
     // getter method for priority
@@ -173,6 +201,8 @@ public class SchedulerSimulation {
         
         // Map to associate each thread with its respective process object
         Map<Thread, Process> processMap = new HashMap<>();
+
+        LinkedList<Process> Totalprocesses= new LinkedList<>(); // to store all processes 
         
         // Print simulation header with elegant formatting
         System.out.println("\n" + Colors.BOLD + Colors.BRIGHT_CYAN + 
@@ -210,6 +240,7 @@ public class SchedulerSimulation {
 
             //  (editing) Create a new process object with a unique name, burst time, and the defined time quantum and priority
             Process process = new Process("P" + i, burstTime, timeQuantum, priority); 
+            Totalprocesses.add(process); //to add the process to the list
             
             // Add the process to the ready queue and the map
             addProcessToQueue(process, processQueue, processMap);
@@ -231,6 +262,12 @@ public class SchedulerSimulation {
         while (!processQueue.isEmpty()) {
             // Get the next thread from the queue (FIFO)
             Thread currentThread = processQueue.poll(); // Dequeues the next thread
+
+            Process p =processMap.get(currentThread); //to get the process that belongs to the thread
+
+            long now= System.currentTimeMillis(); //to get the time now
+            long waitingTime =now - p.getLastQueueJoinTime(); // time now minus the last time the process joined the queue
+            p.setWaitTime(waitingTime); //to update the total waiting time
 
             contextSwitches= contextSwitches + 1; //to increment the context switch
             
@@ -279,7 +316,18 @@ public class SchedulerSimulation {
             }
         }
         System.out.println("total context switches : " + contextSwitches); //to print the total numbers of context switches
-        
+        // summary table
+        System.out.println();
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("SUMMARY TABLE :");
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("Process name | Burst time | Waiting time");
+        for (Process process : Totalprocesses) {
+            System.out.println(process.getName()+ "|"+process.getBurstTime()+ "|"+ process.getTotalWaitTime());
+        }
+        System.out.println();
+            
+
         // End of the scheduler simulation
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + 
                           "╔════════════════════════════════════════════════════════════════════════════════╗" + 
@@ -296,6 +344,8 @@ public class SchedulerSimulation {
     // Method to add a process to the queue and map, while printing a "ready" message
     public static void addProcessToQueue(Process process, Queue<Thread> processQueue, 
                                         Map<Thread, Process> processMap) {
+
+        process.setLastQueueJoinTime(System.currentTimeMillis()); // to update the last queue join time to time now 
         // Create a new thread to run the process
         Thread thread = new Thread(process);
         
