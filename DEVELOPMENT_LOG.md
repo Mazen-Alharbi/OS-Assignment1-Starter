@@ -32,68 +32,80 @@ Document your development process as you work on the assignment. Add entries sho
 
 ## Your Development Log:
 
-### Entry 1 - [Date and Time]
-**What I did**: 
+### Entry 1 - [≈ 16 March 2026 ]
+**What I did**: forked the repositroy and set up my student iD
 
-**Details**: 
+**Details**: -create an account with my university email
+-changed student id to my actual student iD
 
-**Challenges**: 
+**Challenges**: had to install jdk first, how to use git tool
 
-**Solution**: 
+**Solution**: download vs code and set it up, some youtube videos that helps me how to commit and pushed through vs code
 
-**Time spent**: 
-
----
-
-### Entry 2 - [Date and Time]
-**What I did**: 
-
-**Details**: 
-
-**Challenges**: 
-
-**Solution**: 
-
-**Time spent**: 
+**Time spent**: ≈ an hour
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**: 
+### Entry 2 - [≈ 23 March 2026 ]
+**What I did**: worked on feature 1: added priority to process class
 
-**Details**: 
+**Details**: -create a priority filed (1 to 5 , 5 highest)
+-generate random priorites
+-show the priority in the output
 
 **Challenges**: 
 
 **Solution**: 
 
-**Time spent**: 
+**Time spent**: ≈ 2 hours
 
 ---
 
-### Entry 4 - [Date and Time]
-**What I did**: 
+### Entry 3 - [≈ 24 March 2026 ]
+**What I did**: worked on feature 2: implemented context switch counter
 
-**Details**: 
+**Details**: -create static counter for context switch
+-increment the counter for each process that start running
+-show the total context switches in the output
 
 **Challenges**: 
 
 **Solution**: 
 
-**Time spent**: 
+**Time spent**: ≈ 2 hours
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**: 
+### Entry 4 - [≈ 25 March 2026 ]
+**What I did**: worked on feature 3: added waiting time tracking and summary
 
-**Details**: 
+**Details**: -create fileds for tracking each process
+-calculate the total waiting time for each process
+-show summary table in the output
 
 **Challenges**: 
 
 **Solution**: 
 
-**Time spent**: 
+**Time spent**: ≈ 2 hours
+
+---
+
+### Entry 5 - [≈ 27 March 2026]
+**What I did**: solving ANSWERS.md file
+
+**Details**: -explain the difference between threads and process
+-expalin why threads is more suitble to use in this assignment
+-explain what happens if the process dosnet finshed with its time quantum and give an example from my output 
+-explain thread states and give examples from the code
+-describe one real world example that where round robin scheduling would be useful
+
+
+**Challenges**: 
+
+**Solution**: 
+
+**Time spent**: ≈ 1.5 hours
 
 ---
 
@@ -112,7 +124,7 @@ Document your development process as you work on the assignment. Add entries sho
 
 ## Summary
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [around 9 hours]
 
 **Most challenging part**: 
 
