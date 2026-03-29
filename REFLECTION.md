@@ -9,15 +9,19 @@ Answer the following questions about your learning experience. Each answer shoul
 
 **Your Answer:**
 
-[Write your answer here. Discuss specific concepts like thread creation, thread states, how threads execute concurrently, what surprised you, etc.]
-
+i understood that multithreading allows the program to execute multiple tasks by using threads within same process
+i understood how to create threads in java by using runnable interface and how to start them by using start method
+i learned the differance between threads state
+i understood how to use .join and how does it work
+what suprised me how the operating system control the threads 
 ---
 
 ## Question 2: What was the most challenging part of this assignment?
 
 **Your Answer:**
 
-[Describe the specific challenge. Was it understanding the code? Implementing a feature? Using Git? Explain what made it difficult and how it relates to the course concepts.]
+the most challenging part is to understood how threads behave during execution
+how to use methods for managing thread like .start and how to prevent IllegalThreadStateException, that happens when you trying to restart thread
 
 ---
 
@@ -25,15 +29,17 @@ Answer the following questions about your learning experience. Each answer shoul
 
 **Your Answer:**
 
-[Describe your problem-solving approach. Did you read documentation? Ask for help? Debug systematically? What resources did you use? What strategies worked?]
-
+by studying lectures and some youtube videos that helps me to understand the threads
+by analyzing the code step by step see how threads create and start and execute
 ---
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
 **Your Answer:**
 
-[Give specific examples from real applications you use (web browsers, games, mobile apps, etc.). Explain why threads are useful in those scenarios. Connect to what you learned in this assignment.]
+multithreading is used in real world application like web browser multipile tabs running without affecting each other.
+the smart phones running applications in background without affecting each other
+that improves performance and response time
 
 ---
 
